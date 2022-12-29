@@ -48,7 +48,7 @@ function sm3_ctx_new() {
 		nblocks: 0,
 		num: 0
 	};
-	sm3_ctx_init(ctx);
+	sm3_init(ctx);
 	return ctx;
 }
 
@@ -438,7 +438,7 @@ function sm3_kdf(Z, klen) {
 	var ctx = sm3_ctx_new();
 
 	for (var i = 0; i < Math.ceil(klen / SM3_DIGEST_LENGTH); i++) {
-		sm3_ctx_init(ctx);
+		sm3_init(ctx);
 		sm3_update(ctx, Z);
 		SM3_PUTU32(buf, 0, ct);
 		sm3_update(ctx, buf);
